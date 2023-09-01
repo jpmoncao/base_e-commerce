@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  # MySQL Database
+  mysql-db:
+    container_name: mysql-db
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: forcompany
+      MYSQL_DATABASE: sucodemorango4
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  # Node.js (Express) Application
+  node-app:
+    container_name: node-app
+    build:
+      context: ./server
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mysql-db
+
+  # React (Next.js) Application
+  react-app:
+    container_name: react-app
+    build:
+      context: ./client
+    ports:
+      - "3000:3000"
+    depends_on:
+      - node-app
+
+volumes:
+  mysql-data:
