@@ -6,10 +6,11 @@ services:
     container_name: mysql-db
     image: mysql:latest
     environment:
-      MYSQL_ROOT_PASSWORD: forcompany
-      MYSQL_DATABASE: sucodemorango4
+      MYSQL_ROOT_PASSWORD: sucodemorango4
+      MYSQL_DATABASE: forcompany
+      MYSQL_USER: root
     ports:
-      - "3306:3306"
+      - "4444:3306"
     volumes:
       - mysql-data:/var/lib/mysql
 
@@ -19,7 +20,7 @@ services:
     build:
       context: ./server
     ports:
-      - "4000:4000"
+      - "4004:4000"
     depends_on:
       - mysql-db
 
@@ -29,7 +30,7 @@ services:
     build:
       context: ./client
     ports:
-      - "3000:3000"
+      - "3004:3000"
     depends_on:
       - node-app
 
