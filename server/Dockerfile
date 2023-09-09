@@ -2,6 +2,8 @@ FROM node:lts-alpine
 
 WORKDIR /app
 
+RUN chmod +x src/index.ts
+
 RUN npm install -g nodemon
 
 COPY package*.json ./
@@ -12,4 +14,4 @@ COPY . .
 
 EXPOSE 4000
 
-CMD ["sudo", "npx", "nodemon", "src/index.ts", "--watch", "src/", "-e", "ts"]
+CMD ["npx", "nodemon", "src/index.ts", "--watch", "src/", "-e", "ts"]
