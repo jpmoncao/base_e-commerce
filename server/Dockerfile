@@ -12,4 +12,4 @@ COPY . .
 
 EXPOSE 4000
 
-CMD ["npm", "run", "dev"]
+CMD ["sudo", "npx", "nodemon", "src/index.ts", "--watch", "src/", "-e", "ts"]
