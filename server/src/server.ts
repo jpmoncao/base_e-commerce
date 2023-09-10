@@ -13,9 +13,8 @@ class App {
     constructor() {
         // Importa as variáveis de ambiente
         dotenv.config();
-        // this.PORT = process.env.API_PORT || '4000';
-        this.PORT = '40032';
-        this.ADDRESS = process.env.API_ADDRESS || 'http://localhost';
+        this.PORT = process.env.API_PORT || '4000';
+        this.ADDRESS = process.env.API_ADDRESS || '0.0.0.0';
 
         // Cria instância do Express.js
         this.app = express();
